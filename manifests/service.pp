@@ -9,7 +9,7 @@
 #
 # === Variables
 #
-# [*service_name*]
+# [*service_name_real*]
 #   String. This is the service name that is configured by the main pgpool
 #   class.
 #
@@ -38,7 +38,7 @@ class pgpool::service {
     fail('pgpool::service should only be called via the pgpool class')
   }
 
-  $pgpool_service_name = $::pgpool::service_name
+  $pgpool_service_name = $::pgpool::service_name_real
 
   service { $pgpool_service_name:
     ensure => $::pgpool::service_ensure_real,

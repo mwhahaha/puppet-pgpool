@@ -59,8 +59,11 @@
 class pgpool (
   $ensure              = present,
   $manage_service_user = false,
+  $package_name        = undef,
+  $postgresql_version  = '93',
   $service_ensure      = running,
   $service_enable      = true,
+  $service_name        = undef,
   $service_user        = 'postgres',
   $service_group       = 'postgres',
 ) {
@@ -71,6 +74,9 @@ class pgpool (
     fail("service_ensure must be either running or stopped, '${service_ensure}' is not valid")
   }
 
+
+
+  # setup our ensure values for various types
   $file_ensure = $ensure ? {
     absent  => absent,
     default => file,
@@ -92,8 +98,24 @@ class pgpool (
     default => $service_enable
   }
 
-  $package_name = 'pgpool'
-  $service_name = 'pgpool'
+  # determine what version of the package to install
+  $postgresql_version_short = $pgpool::postgresql_version ? {
+    undef   => '93',
+    default => regsubst($pgpool::postgresql_version,'\.','')
+  }
+
+  $package_name_real = $pgpool::package_name ? {
+    undef   => $::osfamily ? {
+      /RedHat/ => "pgpool-II-${postgresql_version_short}",
+      default  => "pgpool2",
+    },
+    default => $pgpool::package_name,
+  }
+
+  $service_name_real = $pgpool::service_name ? {
+    undef   => $package_name_real,
+    default => $pgpool::service_name
+  }
 
   class { 'pgpool::package': }
   class { 'pgpool::service': }

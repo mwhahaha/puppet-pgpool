@@ -32,7 +32,7 @@ class pgpool::package {
     fail('pgpool::package should only be called via the pgpool class')
   }
 
-  $pgpool_package_name = $::pgpool::package_name
+  $pgpool_package_name = $::pgpool::package_name_real
   package { $pgpool_package_name:
     ensure => $::pgpool::ensure
   }

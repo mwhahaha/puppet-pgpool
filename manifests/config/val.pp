@@ -23,8 +23,8 @@
 # [*name*]
 #   String. This is the name of the variable to set within the config file.
 #
-# [*service_name*]
-#   String. This is the service name from the main pgpool class. It is used
+# [*pgpool_service_name*]
+#   String. This is the service name from the pgpool::service class. It is used
 #   for the reload command.
 #
 # [*pgpool_config_file*]
@@ -63,7 +63,7 @@ define pgpool::config::val (
   Augeas {
     incl    => $target_Real,
     lens    => 'Pgpool.lns',
-    require => Exec["${::pgpool::service_name}_reload"]
+    require => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
 
   case $ensure_real {

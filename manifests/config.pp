@@ -10,9 +10,9 @@
 #
 # === Variables
 #
-# [*service_name*]
-#  This class assumes that the service_name variable from pgpool has been
-#  configured.
+# [*pgpool_service_name*]
+#  This class assumes that the pgpool_service_name variable from
+#  pgpool::service  has been configured.
 #
 # [*service_user*]
 #  This class assumes that the service_user variable from pgpool has been
@@ -39,8 +39,8 @@ class pgpool::config {
     fail('pgpool::config should only be called via the pgpool class')
   }
 
-  $config_dir = "/etc/${::pgpool::service_name}"
-  $pgpool_sysconfig_file = "/etc/sysconfig/${::pgpool::service_name}"
+  $config_dir = "/etc/${::pgpool::service::pgpool_service_name}"
+  $pgpool_sysconfig_file = "/etc/sysconfig/${::pgpool::service::pgpool_service_name}"
   $pgpool_config_file = "${config_dir}/pgpool.conf"
   $pool_passwd_file = "${config_dir}/pool_passwd"
   $pool_hba_file = "${config_dir}/pool_hba.conf"
@@ -67,22 +67,22 @@ class pgpool::config {
 
   file { $pgpool_config_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["${::pgpool::service_name}_reload"]
+    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
 
   file { $pgpool_sysconfig_file:
     ensure => $::pgpool::file_ensure,
-    notify => Service[$::pgpool::service_name]
+    notify => Service[$::pgpool::service::pgpool_service_name]
   }
 
   file { $pool_passwd_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["${::pgpool::service_name}_reload"]
+    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
 
   file { $pgpool_hba_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["${::pgpool::service_name}_reload"]
+    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
 
 

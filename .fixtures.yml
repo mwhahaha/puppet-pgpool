@@ -1,0 +1,9 @@
+fixtures:
+  repositories:
+  forge_modules:
+    augeas: "camptocamp/augeas"
+    stdlib: "puppetlabs/stdlib"
+    augeasproviders_core: "herculesteam/augeasproviders_core"
+    augeasproviders_postgresql: "herculesteam/augeasproviders_postgresql"
+  symlinks:
+    pgpool: "#{source_dir}"
