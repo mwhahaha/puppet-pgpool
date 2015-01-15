@@ -15,7 +15,7 @@
 #
 # [*socket_dir*]
 #   String. This is the folder to store the socket.
-#   Defaults to <tt>/var/run</tt>.
+#   Defaults to <tt>/tmp</tt>.
 #
 # [*pcp_port*]
 #   Integer. This is the listen port for the PCP process.
@@ -23,7 +23,7 @@
 #
 # [*pcp_socket_dir*]
 #   String. This is the folder for the PCP process's unix socket.
-#   Defaults to <tt>/var/run</tt>.
+#   Defaults to <tt>/tmp</tt>.
 #
 # === Variables
 #
@@ -48,9 +48,9 @@
 class pgpool::config::connection (
   $listen_addresses       = 'localhost',
   $port                   = 9999,
-  $socket_dir             = '/var/run',
+  $socket_dir             = '/tmp',
   $pcp_port               = 9898,
-  $pcp_socket_dir         = '/var/run',
+  $pcp_socket_dir         = '/tmp',
 ) {
 
   $connection_config = {
