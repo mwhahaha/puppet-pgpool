@@ -43,6 +43,7 @@ class pgpool::config {
   $pgpool_sysconfig_file = "/etc/sysconfig/${::pgpool::service::pgpool_service_name}"
   $pgpool_config_file = "${config_dir}/pgpool.conf"
   $pool_passwd_file = "${config_dir}/pool_passwd"
+  $pcp_file = "${config_dir}/pcp.conf"
   $pool_hba_file = "${config_dir}/pool_hba.conf"
 
   File {
@@ -85,5 +86,9 @@ class pgpool::config {
     notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
 
+  file { $pcp_file:
+    ensure => $::pgpool::file_ensure,
+    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
+  }
 
 }
