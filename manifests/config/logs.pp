@@ -22,6 +22,11 @@
 #   String. Prints statements for each DB node sperately.
 #   Defaults to <tt>off</tt>.
 #
+# [*log_error_verbosity*]
+#   String. How verbose should error messages be?  Should be one of
+#   <tt>terse</tt>, <tt>default</tt>, or <tt>verbose</tt>
+#   Defaults to <tt>default</tt>.
+#
 # [*log_standby_delay*]
 #   String.  Specifies how to log the replication delay. Should be one of
 #   <tt>none</tt>, <tt>always</tt> or <tt>if_over_threshold</tt>.
@@ -66,6 +71,7 @@ class pgpool::config::logs (
   $log_connections        = 'off',
   $log_statement          = 'off',
   $log_per_node_statement = 'off',
+  $log_error_verbosity    = 'default',
   $log_standby_delay      = 'if_over_threshold',
   $log_min_messages       = 'WARNING',
   $syslog_facility        = 'LOCAL0',
@@ -79,6 +85,7 @@ class pgpool::config::logs (
     'log_statement'          => { value => $log_statement },
     'log_per_node_statement' => { value => $log_per_node_statement },
     'log_standby_delay'      => { value => $log_standby_delay },
+    'log_error_verbosity'    => { value => $log_error_verbosity },
     'log_min_messages'       => { value => $log_min_messages },
     'syslog_facility'        => { value => $syslog_facility },
     'syslog_ident'           => { value => $syslog_ident },
