@@ -179,5 +179,5 @@ class pgpool::config::watchdog (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $watchdog_config, $watchdog_defaults)
+  create_resources(pgpool::config::val, $watchdog_config, $watchdog_defaults)
 }

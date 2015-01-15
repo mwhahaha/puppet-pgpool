@@ -65,5 +65,5 @@ class pgpool::config::ssl (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $ssl_config, $ssl_defaults)
+  create_resources(pgpool::config::val, $ssl_config, $ssl_defaults)
 }

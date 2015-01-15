@@ -64,5 +64,5 @@ define pgpool::config::wdother (
     ensure => $ensure
   }
 
-  create_resource(pgpool::config::val, $wdother_config, $wdother_defaults)
+  create_resources(pgpool::config::val, $wdother_config, $wdother_defaults)
 }

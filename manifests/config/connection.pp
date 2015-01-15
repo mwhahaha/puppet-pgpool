@@ -65,5 +65,5 @@ class pgpool::config::connection (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $connection_config, $connection_defaults)
+  create_resources(pgpool::config::val, $connection_config, $connection_defaults)
 }

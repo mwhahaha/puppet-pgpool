@@ -62,5 +62,5 @@ class pgpool::config::failover (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $failover_config, $failover_defaults)
+  create_resources(pgpool::config::val, $failover_config, $failover_defaults)
 }

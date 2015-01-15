@@ -84,5 +84,5 @@ class pgpool::config::masterslave (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $masterslave_config, $masterslave_defaults)
+  create_resources(pgpool::config::val, $masterslave_config, $masterslave_defaults)
 }

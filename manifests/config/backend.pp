@@ -76,5 +76,5 @@ define pgpool::config::backend (
     ensure => $ensure
   }
 
-  create_resource(pgpool::config::val, $backend_config, $backend_defaults)
+  create_resources(pgpool::config::val, $backend_config, $backend_defaults)
 }

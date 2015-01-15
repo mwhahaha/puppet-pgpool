@@ -69,5 +69,5 @@ class pgpool::config::replication (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $replication_config, $replication_defaults)
+  create_resources(pgpool::config::val, $replication_config, $replication_defaults)
 }

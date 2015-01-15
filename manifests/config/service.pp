@@ -43,5 +43,5 @@ class pgpool::config::service (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $service_config, $service_defaults)
+  create_resources(pgpool::config::val, $service_config, $service_defaults)
 }

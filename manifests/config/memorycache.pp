@@ -116,5 +116,5 @@ class pgpool::config::memorycache (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $memorycache_config, $memorycache_defaults)
+  create_resources(pgpool::config::val, $memorycache_config, $memorycache_defaults)
 }

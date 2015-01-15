@@ -52,5 +52,5 @@ class pgpool::config::other (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $other_config, $other_defaults)
+  create_resources(pgpool::config::val, $other_config, $other_defaults)
 }

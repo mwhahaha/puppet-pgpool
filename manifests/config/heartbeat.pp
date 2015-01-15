@@ -65,5 +65,5 @@ class pgpool::config::heartbeat (
     ensure => $ensure
   }
 
-  create_resource(pgpool::config::val, $heartbeat_config, $heartbeat_defaults)
+  create_resources(pgpool::config::val, $heartbeat_config, $heartbeat_defaults)
 }

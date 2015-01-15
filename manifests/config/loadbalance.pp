@@ -60,5 +60,5 @@ class pgpool::config::loadbalance (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $loadbalance_config, $loadbalance_defaults)
+  create_resources(pgpool::config::val, $loadbalance_config, $loadbalance_defaults)
 }

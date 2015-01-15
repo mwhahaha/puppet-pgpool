@@ -96,5 +96,5 @@ class pgpool::config::logs (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $logs_config, $logs_defaults)
+  create_resources(pgpool::config::val, $logs_config, $logs_defaults)
 }

@@ -70,7 +70,7 @@ class pgpool::config::pools (
   $connection_life_time   = 0,
   $reset_query_list       = 'ABORT; DISCARD ALL',
   $client_idle_limit      = 0,
-  $enable_pool_hba        = 'on',
+  $enable_pool_hba        = 'off',
   $pool_passwd            = 'pool_passwd',
   $authentication_timeout = 60,
 ) {
@@ -92,5 +92,5 @@ class pgpool::config::pools (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $pools_config, $pools_defaults)
+  create_resources(pgpool::config::val, $pools_config, $pools_defaults)
 }

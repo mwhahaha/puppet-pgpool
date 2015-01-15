@@ -52,5 +52,5 @@ class pgpool::config::healthcheck (
     ensure => present
   }
 
-  create_resource(pgpool::config::val, $healthcheck_config, $healthcheck_defaults)
+  create_resources(pgpool::config::val, $healthcheck_config, $healthcheck_defaults)
 }
