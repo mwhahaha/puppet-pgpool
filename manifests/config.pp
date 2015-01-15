@@ -45,6 +45,7 @@ class pgpool::config {
   $pool_passwd_file = "${config_dir}/pool_passwd"
   $pcp_file = "${config_dir}/pcp.conf"
   $pool_hba_file = "${config_dir}/pool_hba.conf"
+  $log_dir = "/var/log/${::pgpool::service::pgpool_service_name}"
 
   File {
     owner => $::pgpool::service_user,
@@ -91,4 +92,7 @@ class pgpool::config {
     notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
 
+  file { $log_dir:
+    ensure => $::pgpool::directory_ensure
+  }
 }
