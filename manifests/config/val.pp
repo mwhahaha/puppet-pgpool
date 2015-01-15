@@ -61,7 +61,7 @@ define pgpool::config::val (
   }
 
   Augeas {
-    incl    => $target_Real,
+    incl    => $target_real,
     lens    => 'Pgpool.lns',
     require => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
