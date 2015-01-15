@@ -81,7 +81,7 @@ class pgpool::config {
     notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
 
-  file { $pgpool_hba_file:
+  file { $pool_hba_file:
     ensure => $::pgpool::file_ensure,
     notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
