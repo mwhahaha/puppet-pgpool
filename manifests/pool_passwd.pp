@@ -61,7 +61,7 @@ define pgpool::pool_passwd (
   }
 
   Augeas {
-    incl    => $target_Real,
+    incl    => $target_real,
     lens    => 'Pgpool_Passwd.lns',
     require => Exec["${::pgpool::service::pgpool_service_name}_reload"]
   }
