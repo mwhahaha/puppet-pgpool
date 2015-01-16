@@ -1,7 +1,7 @@
 # == Type: pgpool::pool_passwd
 #
 # This resource allows for the manipulation of users and password hashes within
-# a pool_passwd file via Augeas.
+# a pool_passwd file via file_line.
 #
 # === Parameters
 #
@@ -60,25 +60,10 @@ define pgpool::pool_passwd (
     default => $ensure,
   }
 
-  Augeas {
-    incl    => $target_real,
-    lens    => 'Pgpool_Passwd.lns',
-    require => Exec["${::pgpool::service::pgpool_service_name}_reload"]
-  }
-
-  case $ensure_real {
-    present: {
-      augeas { "set pool_passwd ${name}":
-        changes => "set ${name} '${password_hash}'",
-      }
-    }
-    absent: {
-      augeas { "rm pgool_passwd ${name}":
-        changes => "rm ${name}",
-      }
-    }
-    default: {
-      fail("pgpool::pool_passwd - Invalid value of ensure '${ensure}'")
-    }
+  file_line { $name:
+    ensure   => $ensure_real,
+    path     => $target_real,
+    line     => "${name}:${password_hash}",
+    match    => "^${name}:"
   }
 }
