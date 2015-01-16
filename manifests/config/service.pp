@@ -5,7 +5,7 @@
 #
 # === Parameters
 #
-# [*pid_filename*]
+# [*pid_file_name*]
 #   String. This is the location of the pid file for the pgpool process.
 #   Defaults to <tt>/var/run/pgpool.pid</tt>.
 #
@@ -35,8 +35,8 @@ class pgpool::config::service (
 ) {
 
   $service_config = {
-    'pid_filename' => { value => $pid_filename },
-    'logdir'       => { value => $logdir },
+    'pid_file_name' => { value => $pid_file_name },
+    'logdir'        => { value => $logdir },
   }
 
   $service_defaults = {
