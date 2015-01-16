@@ -63,7 +63,8 @@ define pgpool::config::val (
   Augeas {
     incl    => $target_real,
     lens    => 'Pgpool.lns',
-    require => Exec["${::pgpool::service::pgpool_service_name}_reload"]
+    require => Exec["${::pgpool::service::pgpool_service_name}_reload"],
+    before  => Service[$::pgpool::service::pgpool_service_name]
   }
 
   case $ensure_real {

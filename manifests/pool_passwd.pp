@@ -64,6 +64,7 @@ define pgpool::pool_passwd (
     ensure   => $ensure_real,
     path     => $target_real,
     line     => "${name}:${password_hash}",
-    match    => "^${name}:"
+    match    => "^${name}:",
+    before   => Service[$::pgpool::service::pgpool_service_name]
   }
 }
