@@ -63,7 +63,7 @@ define pgpool::config::val (
   Augeas {
     incl    => $target_real,
     lens    => 'Pgpool.lns',
-    require => Class['pgool::config'],
+    require => Class['pgpool::config'],
     notify  => Exec["${::pgpool::service::pgpool_service_name}_reload"],
     before  => Service[$::pgpool::service::pgpool_service_name]
   }
