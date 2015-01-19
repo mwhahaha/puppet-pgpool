@@ -47,6 +47,7 @@ class pgpool::service {
 
   exec { "${pgpool_service_name}_reload":
     command     => '/usr/bin/pgpool reload',
+    require     => Service[$pgpool_service_name],
     refreshonly => true,
   }
 }
