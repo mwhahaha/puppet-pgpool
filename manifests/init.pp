@@ -107,7 +107,7 @@ class pgpool (
   $package_name_real = $pgpool::package_name ? {
     undef   => $::osfamily ? {
       /RedHat/ => "pgpool-II-${postgresql_version_short}",
-      default  => "pgpool2",
+      default  => 'pgpool2',
     },
     default => $pgpool::package_name,
   }

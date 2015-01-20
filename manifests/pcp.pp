@@ -23,14 +23,11 @@
 # [*name*]
 #   String. This is the name of the user to manage.
 #
-# [*pool_passwd_file*]
-#   String. This is the pool_passwd file and is pulled from pgpool::config.
-#
 # === Examples
 #
 # pgpool::config::val { 'myuser':
 #   target        => '/etc/pgpool/pcp.conf',
-#   password_hash => ''e2b1fca515949e5d54fb22b8ed95575
+#   password_hash => 'e2b1fca515949e5d54fb22b8ed95575'
 # }
 #
 # === Authors
@@ -56,25 +53,11 @@ define pgpool::pcp (
     default => $ensure,
   }
 
-  Augeas {
-    incl    => $target_Real,
-    lens    => 'Pgpool_Passwd.lns',
-    require => Exec['pgpool_reload']
-  }
-
-  case $ensure_real {
-    present: {
-      augeas { "set pcp ${name}":
-        changes => "set ${name} '${password_hash}'",
-      }
-    }
-    absent: {
-      augeas { "rm pcp ${name}":
-        changes => "rm ${name}",
-      }
-    }
-    default: {
-      fail("pgpool::pcp - Invalid value of ensure '${ensure}'")
-    }
+  file_line { $name:
+    ensure   => $ensure_real,
+    path     => $target_real,
+    line     => "${name}:${password_hash}",
+    match    => "^${name}:",
+    before   => Service['pgpool']
   }
 }

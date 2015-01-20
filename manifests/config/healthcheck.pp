@@ -40,12 +40,12 @@ class pgpool::config::healthcheck (
 ) {
 
   $healthcheck_config = {
-    'health_check_period'          => { value => $health_check_period },
-    'health_check_timeout'         => { value => $health_check_timeout },
-    'health_check_user'            => { value => $health_check_user },
-    'health_check_password'        => { value => $health_check_password },
-    'health_check_max_retries'     => { value => $health_check_max_retries },
-    'health_check_max_retry_delay' => { value => $health_check_max_retry_delay },
+    'health_check_period'      => { value => $health_check_period },
+    'health_check_timeout'     => { value => $health_check_timeout },
+    'health_check_user'        => { value => $health_check_user },
+    'health_check_password'    => { value => $health_check_password },
+    'health_check_max_retries' => { value => $health_check_max_retries },
+    'health_check_retry_delay' => { value => $health_check_retry_delay },
   }
 
   $healthcheck_defaults = {

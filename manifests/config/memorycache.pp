@@ -105,7 +105,7 @@ class pgpool::config::memorycache (
     'memqcache_max_num_cache'           => { value => $memqcache_max_num_cache },
     'memqcache_expire'                  => { value => $memqcache_expire },
     'memqcache_auto_cache_invalidation' => { value => $memqcache_auto_cache_invalidation },
-    'memqcache_max_cache'               => { value => $memqcache_max_cache },
+    'memqcache_maxcache'                => { value => $memqcache_maxcache },
     'memqcache_cache_block_size'        => { value => $memqcache_cache_block_size },
     'memqcache_oiddir'                  => { value => $memqcache_oiddir },
     'white_memqcache_table_list'        => { value => $white_memqcache_table_list },

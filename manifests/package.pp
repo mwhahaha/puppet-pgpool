@@ -34,7 +34,7 @@ class pgpool::package {
 
   $pgpool_package_name = $::pgpool::package_name_real
   package { 'pgpool':
+    ensure => $::pgpool::ensure,
     name   => $pgpool_package_name,
-    ensure => $::pgpool::ensure
   }
 }

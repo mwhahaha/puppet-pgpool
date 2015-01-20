@@ -50,11 +50,11 @@ class pgpool::config::failover (
     'failback_command'              => { value => $failback_command },
     'fail_over_on_backend_error'    => { value => $fail_over_on_backend_error },
     'search_primary_node_timeout'   => { value => $search_primary_node_timeout },
-    'recover_user'                  => { value => $recover_user },
-    'recover_password'              => { value => $recover_password },
-    'recover_1st_stage_command'     => { value => $recover_1st_stage_command },
-    'recover_2nd_stage_command'     => { value => $recover_2nd_stage_command },
-    'recover_timeout'               => { value => $recover_timeout },
+    'recovery_user'                 => { value => $recovery_user },
+    'recovery_password'             => { value => $recovery_password },
+    'recovery_1st_stage_command'    => { value => $recovery_1st_stage_command },
+    'recovery_2nd_stage_command'    => { value => $recovery_2nd_stage_command },
+    'recovery_timeout'              => { value => $recovery_timeout },
     'client_idle_limit_in_recovery' => { value => $client_idle_limit_in_recovery },
   }
 
