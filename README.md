@@ -28,7 +28,7 @@ OS.
 
 ## Setup
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
 As part of using this module, you will need to have the following modules
 installed.
@@ -38,6 +38,13 @@ installed.
  * herculesteam/augeasproviders_core
  * herculesteam/augeasproviders_postgresql
 
+Additionally there is a submode that references an external Augeas lense. If
+you want to check out this module, make sure to recursively fetch the module
+to get the augeas-pgpool submodule.
+
+```
+git clone --recursive https://github.com/mwhahaha/puppet-pgpool.git
+```
 
 ## Usage
 
