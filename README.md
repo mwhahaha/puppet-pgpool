@@ -1,5 +1,7 @@
 # pgpool
 
+[![Build Status](https://travis-ci.org/mwhahaha/puppet-pgpool.png?branch=master)](https://travis-ci.org/mwhahaha/puppet-pgpool)
+
 #### Table of Contents
 
 1. [Overview](#overview)
