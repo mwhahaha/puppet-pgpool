@@ -157,7 +157,7 @@ Resources:
 
 ## Limitations
 
-This has only been tested on RedHat/CentOS 6.
+This has only been tested on RedHat/CentOS 6.  It might work on Debian/Ubuntu.
 
 ## Development
 
