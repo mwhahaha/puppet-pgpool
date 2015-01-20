@@ -23,10 +23,6 @@
 # [*name*]
 #   String. This is the name of the user to manage.
 #
-# [*pgpool_service_name*]
-#   String. This is the service name from the pgpool::service class. It is used
-#   for the reload command.
-#
 # [*pool_passwd_file*]
 #   String. This is the pool_passwd file and is pulled from pgpool::config.
 #
@@ -65,6 +61,6 @@ define pgpool::pool_passwd (
     path     => $target_real,
     line     => "${name}:${password_hash}",
     match    => "^${name}:",
-    before   => Service[$::pgpool::service::pgpool_service_name]
+    before   => Service['pgpool']
   }
 }

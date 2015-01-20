@@ -64,8 +64,8 @@ define pgpool::config::val (
     incl    => $target_real,
     lens    => 'Pgpool.lns',
     require => Class['pgpool::config'],
-    notify  => Exec["${::pgpool::service::pgpool_service_name}_reload"],
-    before  => Service[$::pgpool::service::pgpool_service_name]
+    notify  => Exec['pgpool_reload'],
+    before  => Service['pgpool']
   }
 
   case $ensure_real {

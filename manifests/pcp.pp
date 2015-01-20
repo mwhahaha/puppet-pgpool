@@ -23,10 +23,6 @@
 # [*name*]
 #   String. This is the name of the user to manage.
 #
-# [*pgpool_service_name*]
-#   String. This is the service name from the pgpool::service class. It is used
-#   for the reload command.
-#
 # [*pool_passwd_file*]
 #   String. This is the pool_passwd file and is pulled from pgpool::config.
 #
@@ -63,7 +59,7 @@ define pgpool::pcp (
   Augeas {
     incl    => $target_Real,
     lens    => 'Pgpool_Passwd.lns',
-    require => Exec["${::pgpool::service::pgpool_service_name}_reload"]
+    require => Exec['pgpool_reload']
   }
 
   case $ensure_real {

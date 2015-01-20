@@ -6,13 +6,14 @@ describe 'pgpool' do
       should contain_class('pgpool')
       should contain_class('pgpool::package')
       should contain_package('pgpool').
+        with_name("#{pkg_name}").
         with_ensure('present')
       should contain_class('pgpool::config')
-      should contain_file('/etc/pgpool/pgpool.conf').
+      should contain_file("#{config_path}/pgpool.conf").
         with_ensure('file').
         with_owner('postgres').
         with_group('postgres')
-      should contain_file('/etc/sysconfig/pgpool').
+      should contain_file("#{defaults_path}/#{pkg_name}").
         with_ensure('file').
         with_owner('postgres').
         with_group('postgres')
@@ -30,6 +31,9 @@ describe 'pgpool' do
       :operatingsystem => 'CentoOS',
       :concat_basedir  => '/tmp'
     } }
+    let(:config_path) { '/etc/pgpool-II-93' }
+    let(:defaults_path) { '/etc/sysconfig' }
+    let(:pkg_name) { 'pgpool-II-93' }
     it_behaves_like 'a Linux OS with defaults' do
     end
   end
@@ -41,6 +45,9 @@ describe 'pgpool' do
       :operatingsystem => 'Debian',
       :concat_basedir  => '/tmp'
     } }
+    let(:config_path) { '/etc/pgpool2' }
+    let(:defaults_path) { '/etc/defaults' }
+    let(:pkg_name) { 'pgpool2' }
     it_behaves_like 'a Linux OS with defaults' do
     end
   end

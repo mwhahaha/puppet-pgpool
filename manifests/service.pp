@@ -40,14 +40,15 @@ class pgpool::service {
 
   $pgpool_service_name = $::pgpool::service_name_real
 
-  service { $pgpool_service_name:
+  service { 'pgpool':
+    name   => $pgpool_service_name,
     ensure => $::pgpool::service_ensure_real,
     enable => $::pgpool::service_enable_real
   }
 
-  exec { "${pgpool_service_name}_reload":
+  exec { "pgpool_reload":
     command     => '/usr/bin/pgpool reload',
-    require     => Service[$pgpool_service_name],
+    require     => Service['pgpool'],
     refreshonly => true,
   }
 }

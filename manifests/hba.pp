@@ -97,7 +97,7 @@ define pgpool::hba (
     options  => $options,
     position => $position,
     target   => $target_real,
-    notify   => Exec["${::pgpool::service::pgpool_service_name}_reload"],
-    before   => Service[$::pgpool::service::pgpool_service_name]
+    notify   => Exec['pgpool_reload'],
+    before   => Service['pgpool']
   }
 }

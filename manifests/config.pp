@@ -40,7 +40,12 @@ class pgpool::config {
   }
 
   $config_dir = "/etc/${::pgpool::service::pgpool_service_name}"
-  $pgpool_sysconfig_file = "/etc/sysconfig/${::pgpool::service::pgpool_service_name}"
+  $defaults_dir = $::osfamily ? {
+    /RedHat/ => '/etc/sysconfig',
+    /Debian/ => '/etc/defaults',
+    default  => '/etc/sysconfig',
+  }
+  $pgpool_sysconfig_file = "${defaults_dir}/${::pgpool::service::pgpool_service_name}"
   $pgpool_config_file = "${config_dir}/pgpool.conf"
   $pool_passwd_file = "${config_dir}/pool_passwd"
   $pcp_file = "${config_dir}/pcp.conf"
@@ -74,7 +79,7 @@ class pgpool::config {
 
   file { $pgpool_sysconfig_file:
     ensure => $::pgpool::file_ensure,
-    notify => Service[$::pgpool::service::pgpool_service_name]
+    notify => Service['pgpool']
   }
 
   file { $pool_passwd_file:
