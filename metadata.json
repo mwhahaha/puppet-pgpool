@@ -7,6 +7,7 @@
   "source": "https://github.com/mwhahaha/puppet-pgpool",
   "project_page": "https://github.com/mwhahaha/puppet-pgpool",
   "issues_url": "https://github.com/mwhahaha/puppet-pgpool/issues",
+  "tags": [ "pgpool", "database", "postgresql" ],
   "dependencies": [
     {
       "version_range": ">= 1.0.0",
