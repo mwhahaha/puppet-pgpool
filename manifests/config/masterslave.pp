@@ -21,7 +21,7 @@
 #
 # [*sr_check_user*]
 #   String. The user to use for replication checks.
-#   Defaults to <tt>pgpool</tt>.
+#   Defaults to <tt>nobody</tt>.
 #
 # [*sr_check_password*]
 #   String. The password to use for the replication checks.
@@ -56,15 +56,11 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::config::masterslave (
   $master_slave_mode     = 'off',
   $master_slave_sub_mode = 'stream',
   $sr_check_period       = 0,
-  $sr_check_user         = 'pgpool',
+  $sr_check_user         = 'nobody',
   $sr_check_password     = '',
   $delay_threshold       = 10000000,
   $follow_master_command = '',

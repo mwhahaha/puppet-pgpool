@@ -62,10 +62,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::config::logs (
   $log_destination        = 'stderr',
   $log_connections        = 'off',

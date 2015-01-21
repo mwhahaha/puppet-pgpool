@@ -32,10 +32,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::config::other (
   $relcache_expire  = 0,
   $relcache_size    = 256,

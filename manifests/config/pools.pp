@@ -58,10 +58,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Your name here, unless otherwise noted.
-#
 class pgpool::config::pools (
   $num_init_children      = 32,
   $max_pool               = 4,

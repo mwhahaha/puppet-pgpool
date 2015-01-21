@@ -68,8 +68,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
 define pgpool::hba (
   $ensure   = present,
   $type     = undef,

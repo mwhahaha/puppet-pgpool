@@ -41,10 +41,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::config::ssl (
   $ssl                    = 'off',
   $ssl_key                = '',

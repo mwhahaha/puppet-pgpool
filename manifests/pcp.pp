@@ -25,7 +25,7 @@
 #
 # === Examples
 #
-# pgpool::config::val { 'myuser':
+# pgpool::pcp { 'myuser':
 #   target        => '/etc/pgpool/pcp.conf',
 #   password_hash => 'e2b1fca515949e5d54fb22b8ed95575'
 # }
@@ -33,10 +33,6 @@
 # === Authors
 #
 # Alex Schultz <aschultz@next-development.com>
-#
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
 #
 define pgpool::pcp (
   $ensure        = present,

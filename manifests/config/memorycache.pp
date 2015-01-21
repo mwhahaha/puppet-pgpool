@@ -76,10 +76,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::config::memorycache (
   $memory_cache_enabled              = 'off',
   $memqcache_method                  = 'shmem',

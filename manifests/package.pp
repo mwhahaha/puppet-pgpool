@@ -8,7 +8,7 @@
 #
 # === Variables
 #
-# [*package_name*]
+# [*package_name_real*]
 #   String. This is the package name which is configured by the main pgpool
 #   class.
 #
@@ -22,10 +22,6 @@
 # === Authors
 #
 # Alex Schultz <aschultz@next-development.com>
-#
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
 #
 class pgpool::package {
   if $caller_module_name != $module_name {

@@ -50,10 +50,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 define pgpool::config::backend (
   $ensure         = present,
   $id             = 0,

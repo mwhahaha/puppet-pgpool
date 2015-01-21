@@ -25,10 +25,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::config::service (
   $pid_file_name = '/var/run/pgpool-II-93.pid',
   $logdir        = '/var/log/pgpool-II-93',

@@ -27,9 +27,7 @@
 #
 # === Variables
 #
-# Here you should define a list of variables that this module would require.
-#
-# [*pgpool_package_name*]
+# N/A
 #
 # === Examples
 #
@@ -40,10 +38,6 @@
 # === Authors
 #
 # Alex Schultz <aschultz@next-development.com>
-#
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
 #
 class pgpool::config::connection (
   $listen_addresses       = 'localhost',

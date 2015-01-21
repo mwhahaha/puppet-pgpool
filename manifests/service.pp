@@ -29,10 +29,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::service {
   if $caller_module_name != $module_name {
     fail('pgpool::service should only be called via the pgpool class')

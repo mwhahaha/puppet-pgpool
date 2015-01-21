@@ -62,12 +62,6 @@ class pgpool::config {
     test_source => "puppet:///modules/${module_name}/augeas-pgpool/test/test_pgpool.aug",
   }
 
-  augeas::lens { 'pgpool_passwd':
-    ensure      => present,
-    lens_source => "puppet:///modules/${module_name}/augeas-pgpool/pgpool_passwd.aug",
-    test_source => "puppet:///modules/${module_name}/augeas-pgpool/test/test_pgpool_passwd.aug",
-  }
-
   file { $pgpool_config_file:
     ensure => $::pgpool::file_ensure,
     notify => Exec["pgpool_reload"]

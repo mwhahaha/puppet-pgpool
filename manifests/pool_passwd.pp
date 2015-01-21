@@ -28,7 +28,7 @@
 #
 # === Examples
 #
-# pgpool::config::val { 'myuser':
+# pgpool::pool_passwd { 'myuser':
 #   target        => '/etc/pgpool/my_pool_passwd',
 #   password_hash => 'md53fc18e3994ebb693e804e5c112461531'
 # }
@@ -36,10 +36,6 @@
 # === Authors
 #
 # Alex Schultz <aschultz@next-development.com>
-#
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
 #
 define pgpool::pool_passwd (
   $ensure        = present,
