@@ -30,10 +30,6 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-# === Copyright
-#
-# Copyright 2015 Alex Schultz, unless otherwise noted.
-#
 class pgpool::config {
   if $caller_module_name != $module_name {
     fail('pgpool::config should only be called via the pgpool class')
@@ -74,7 +70,7 @@ class pgpool::config {
 
   file { $pgpool_config_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
+    notify => Exec["pgpool_reload"]
   }
 
   file { $pgpool_sysconfig_file:
@@ -84,17 +80,17 @@ class pgpool::config {
 
   file { $pool_passwd_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
+    notify => Exec["pgpool_reload"]
   }
 
   file { $pool_hba_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
+    notify => Exec["pgpool_reload"]
   }
 
   file { $pcp_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["${::pgpool::service::pgpool_service_name}_reload"]
+    notify => Exec["pgpool_reload"]
   }
 
   file { $log_dir:
