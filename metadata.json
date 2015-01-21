@@ -5,8 +5,8 @@
   "summary": "A puppet module to configure pgpool",
   "license": "Apache 2.0",
   "source": "https://github.com/mwhahaha/puppet-pgpool",
-  "issues_url": "https://github.com/mwhahaha/puppet-pgpool",
-  "project_page": "https://github.com/mwhahaha/puppet-pgpool/issues",
+  "project_page": "https://github.com/mwhahaha/puppet-pgpool",
+  "issues_url": "https://github.com/mwhahaha/puppet-pgpool/issues",
   "dependencies": [
     {
       "version_range": ">= 1.0.0",
