@@ -35,12 +35,17 @@ class pgpool::config {
     fail('pgpool::config should only be called via the pgpool class')
   }
 
-  $config_dir = "/etc/${::pgpool::service::pgpool_service_name}"
+  $config_dir = $::pgpool::config_dir ? {
+    undef   => "/etc/${::pgpool::service::pgpool_service_name}",
+    default => $::pgpool::config_dir
+  }
+
   $defaults_dir = $::osfamily ? {
     /RedHat/ => '/etc/sysconfig',
     /Debian/ => '/etc/defaults',
     default  => '/etc/sysconfig',
   }
+
   $pgpool_sysconfig_file = "${defaults_dir}/${::pgpool::service::pgpool_service_name}"
   $pgpool_config_file = "${config_dir}/pgpool.conf"
   $pool_passwd_file = "${config_dir}/pool_passwd"

@@ -15,6 +15,22 @@
 #   user exists.
 #   Defaults to <tt>false</tt>
 #
+# [*config_dir*]
+#   String. This is the path to the config dir for pgpool.  If not provided,
+#   it will default to <tt>/etc/pgpool-II-93</tt>.
+#   Defaults to <tt>undef</tt>
+#
+# [*package_name*]
+#   String. This is the package name to install for pgpool.  If not provided,
+#   it will default to <tt>pgpool-II-93</tt>.
+#   Defaults to <tt>undef</tt>.
+#
+# [*postgresql_version*]
+#   String.  This is the postgresql version you are running.  It is used to
+#   build the default package name and configuration dirs.  If not provided,
+#   it will default to <tt>9.3</tt>.
+#   Defaults to <tt>undef</tt>.
+#
 # [*service_ensure*]
 #   String. This is controls if the service should be running or stopped.
 #   Defaults to <tt>running</tt>
@@ -55,8 +71,9 @@
 class pgpool (
   $ensure              = present,
   $manage_service_user = false,
+  $config_dir          = undef,
   $package_name        = undef,
-  $postgresql_version  = '93',
+  $postgresql_version  = undef,
   $service_ensure      = running,
   $service_enable      = true,
   $service_name        = undef,
@@ -94,10 +111,15 @@ class pgpool (
     default => $service_enable
   }
 
+  $postgresql_version_real = $postgresql_version ? {
+    undef   => '9.3',
+    default => $postgresql_version
+  }
+
   # determine what version of the package to install
-  $postgresql_version_short = $pgpool::postgresql_version ? {
+  $postgresql_version_short = $postgresql_version_real ? {
     undef   => '93',
-    default => regsubst($pgpool::postgresql_version,'\.','')
+    default => regsubst($postgresql_version_real,'\.','')
   }
 
   $package_name_real = $pgpool::package_name ? {
