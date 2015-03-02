@@ -1,6 +1,6 @@
 {
   "name": "mwhahaha-pgpool",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "mwhahaha",
   "summary": "A puppet module to configure pgpool",
   "license": "Apache 2.0",
@@ -14,16 +14,20 @@
       "name": "puppetlabs-stdlib"
     },
     {
+      "version_range": ">= 1.0.0",
+      "name": "puppetlabs-inifile"
+    },
+    {
       "version_range": ">= 1.1.4",
       "name": "camptocamp-augeas"
     },
     {
       "version_range": ">= 2.1.1",
-      "name": "hurculesteam-augeasproviders_core"
+      "name": "herculesteam-augeasproviders_core"
     },
     {
       "version_range": ">= 2.0.3",
-      "name": "hurculesteam-augeasproviders_postgresql"
+      "name": "herculesteam-augeasproviders_postgresql"
     }
   ],
   "operatingsystem_support": [
