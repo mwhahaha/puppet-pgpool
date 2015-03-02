@@ -133,6 +133,7 @@ Classes:
  * pgpool::config
  * pgpool::service
  * pgpool::package
+ * pgpool::monitor
  * pgpool::config::watchdog
  * pgpool::config::pools
  * pgpool::config::loadbalance
@@ -164,3 +165,8 @@ This has only been tested on RedHat/CentOS 6.  It might work on Debian/Ubuntu.
 ## Development
 
 Pull requests welcome.
+
+## Other resources
+
+To use pgpool::monitor, the code for the pgpool-monitor package is available
+from [pgpool-monitor](https://github.com/rackerlabs/pgpool-monitor).

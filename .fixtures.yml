@@ -3,6 +3,7 @@ fixtures:
   forge_modules:
     augeas: "camptocamp/augeas"
     stdlib: "puppetlabs/stdlib"
+    inifile: "puppetlabs/inifile"
     augeasproviders_core: "herculesteam/augeasproviders_core"
     augeasproviders_postgresql: "herculesteam/augeasproviders_postgresql"
   symlinks:
