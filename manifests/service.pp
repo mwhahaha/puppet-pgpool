@@ -37,8 +37,8 @@ class pgpool::service {
   $pgpool_service_name = $::pgpool::service_name_real
 
   service { 'pgpool':
-    name   => $pgpool_service_name,
     ensure => $::pgpool::service_ensure_real,
+    name   => $pgpool_service_name,
     enable => $::pgpool::service_enable_real
   }
 

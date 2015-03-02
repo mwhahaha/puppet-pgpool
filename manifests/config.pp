@@ -69,7 +69,7 @@ class pgpool::config {
 
   file { $pgpool_config_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["pgpool_reload"]
+    notify => Exec['pgpool_reload']
   }
 
   file { $pgpool_sysconfig_file:
@@ -79,17 +79,17 @@ class pgpool::config {
 
   file { $pool_passwd_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["pgpool_reload"]
+    notify => Exec['pgpool_reload']
   }
 
   file { $pool_hba_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["pgpool_reload"]
+    notify => Exec['pgpool_reload']
   }
 
   file { $pcp_file:
     ensure => $::pgpool::file_ensure,
-    notify => Exec["pgpool_reload"]
+    notify => Exec['pgpool_reload']
   }
 
   file { $log_dir:

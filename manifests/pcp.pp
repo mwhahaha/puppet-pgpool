@@ -50,10 +50,10 @@ define pgpool::pcp (
   }
 
   file_line { $name:
-    ensure   => $ensure_real,
-    path     => $target_real,
-    line     => "${name}:${password_hash}",
-    match    => "^${name}:",
-    before   => Service['pgpool']
+    ensure => $ensure_real,
+    path   => $target_real,
+    line   => "${name}:${password_hash}",
+    match  => "^${name}:",
+    before => Service['pgpool']
   }
 }
