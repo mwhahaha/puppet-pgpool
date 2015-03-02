@@ -1,32 +1,32 @@
 {
   "name": "mwhahaha-pgpool",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "mwhahaha",
   "summary": "A puppet module to configure pgpool",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/mwhahaha/puppet-pgpool",
   "project_page": "https://github.com/mwhahaha/puppet-pgpool",
   "issues_url": "https://github.com/mwhahaha/puppet-pgpool/issues",
   "tags": [ "pgpool", "database", "postgresql" ],
   "dependencies": [
     {
-      "version_range": ">= 1.0.0",
+      "version_requirement": ">= 1.0.0",
       "name": "puppetlabs-stdlib"
     },
     {
-      "version_range": ">= 1.0.0",
+      "version_requirement": ">= 1.0.0",
       "name": "puppetlabs-inifile"
     },
     {
-      "version_range": ">= 1.1.4",
+      "version_requirement": ">= 1.1.4",
       "name": "camptocamp-augeas"
     },
     {
-      "version_range": ">= 2.1.1",
+      "version_requirement": ">= 2.1.1",
       "name": "herculesteam-augeasproviders_core"
     },
     {
-      "version_range": ">= 2.0.3",
+      "version_requirement": ">= 2.0.3",
       "name": "herculesteam-augeasproviders_postgresql"
     }
   ],
