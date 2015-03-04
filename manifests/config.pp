@@ -42,7 +42,7 @@ class pgpool::config {
 
   $defaults_dir = $::osfamily ? {
     /RedHat/ => '/etc/sysconfig',
-    /Debian/ => '/etc/defaults',
+    /Debian/ => '/etc/default',
     default  => '/etc/sysconfig',
   }
 
