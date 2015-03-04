@@ -42,8 +42,15 @@ class pgpool::service {
     enable => $::pgpool::service_enable_real
   }
 
+  $exec_command_reload = $::osfamily ? {
+    /RedHat/ => '/usr/bin/pgpool reload',
+    /Debian/ => '/usr/sbin/pgpool reload',
+    default  => '/usr/bin/pgpool reload',
+  }
+
+
   exec { 'pgpool_reload':
-    command     => '/usr/bin/pgpool reload',
+    command     => $exec_command_reload,
     require     => Service['pgpool'],
     refreshonly => true,
   }
