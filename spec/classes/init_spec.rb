@@ -46,7 +46,7 @@ describe 'pgpool' do
       :concat_basedir  => '/tmp'
     } }
     let(:config_path) { '/etc/pgpool2' }
-    let(:defaults_path) { '/etc/defaults' }
+    let(:defaults_path) { '/etc/default' }
     let(:pkg_name) { 'pgpool2' }
     it_behaves_like 'a Linux OS with defaults' do
     end
