@@ -1,6 +1,6 @@
 {
   "name": "mwhahaha-pgpool",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "mwhahaha",
   "summary": "A puppet module to configure pgpool",
   "license": "Apache-2.0",

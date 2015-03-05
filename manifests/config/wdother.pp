@@ -53,7 +53,7 @@ define pgpool::config::wdother (
   $wdother_config = {
     "other_pgpool_hostname${id}" => { value => $hostname },
     "other_pgpool_port${id}"     => { value => $port },
-    "other_wd_port${id}"       => { value => $wd_port },
+    "other_wd_port${id}"         => { value => $wd_port },
   }
 
   $wdother_defaults = {
