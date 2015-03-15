@@ -49,6 +49,14 @@
 #   owned by.  The pgpool service scripts use postgres.
 #   Defaults to <tt>postgres</tt>
 #
+# [*log_user*]
+#   String. This is the user that the log file should be owned by.
+#   Defaults to <tt>postgres</tt>
+#
+# [*log_group*]
+#   String. This is the group that the log file should be owned by.
+#   Defaults to <tt>postgres</tt>
+#
 # === Variables
 #
 #  N/A
@@ -79,6 +87,8 @@ class pgpool (
   $service_name        = undef,
   $service_user        = 'postgres',
   $service_group       = 'postgres',
+  $log_user            = 'postgres',
+  $log_group           = 'postgres',
 ) {
   anchor { 'pgpool::begin': }
   anchor { 'pgpool::end': }
