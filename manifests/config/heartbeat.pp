@@ -43,7 +43,7 @@
 #
 # Alex Schultz <aschultz@next-development.com>
 #
-class pgpool::config::heartbeat (
+define pgpool::config::heartbeat (
   $ensure         = present,
   $id             = 0,
   $destination    = 'localhost',
