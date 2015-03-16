@@ -22,6 +22,14 @@
 #  This class assumes that the service_group variable from pgpool has been
 #  configured.
 #
+# [*log_user*]
+#  This class assumes that the log_user variable from pgpool has been
+#  configured.
+#
+# [*log_group*]
+#  This class assumes that the log_group variable from pgpool has been
+#  configured.
+#
 # === Examples
 #
 # N/A
@@ -93,6 +101,8 @@ class pgpool::config {
   }
 
   file { $log_dir:
+    owner  => $::pgpool::log_user,
+    group  => $::pgpool::log_group,
     ensure => $::pgpool::directory_ensure
   }
 }
