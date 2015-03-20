@@ -25,6 +25,10 @@
 #   Integer. Cached connections expiration time in se4conds.
 #   Defaults to <tt>0</tt>.
 #
+# [*connection_cache*]
+#   String. Activate connection pools
+#   Defaults to <tt>on</tt>.
+#
 # [*reset_query_list*]
 #   String. The SQL commands to be sent to reset the connection on the backend
 #   when exiting a session.
@@ -64,6 +68,7 @@ class pgpool::config::pools (
   $child_life_time        = 300,
   $child_max_connections  = 0,
   $connection_life_time   = 0,
+  $connection_cache       = 'on',
   $reset_query_list       = 'ABORT; DISCARD ALL',
   $client_idle_limit      = 0,
   $enable_pool_hba        = 'off',
@@ -77,6 +82,7 @@ class pgpool::config::pools (
     'child_life_time'        => { value => $child_life_time },
     'child_max_connections'  => { value => $child_max_connections },
     'connection_life_time'   => { value => $connection_life_time },
+    'connection_cache'       => { value => $connection_cache },
     'reset_query_list'       => { value => $reset_query_list },
     'client_idle_limit'      => { value => $client_idle_limit },
     'enable_pool_hba'        => { value => $enable_pool_hba },
