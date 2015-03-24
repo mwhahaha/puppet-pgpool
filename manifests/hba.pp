@@ -31,7 +31,7 @@
 # String. This is the address option for the pool_hba.conf item.
 # Defaults to <tt>undef</tt>
 #
-# [*method*]
+# [*auth_method*]
 # String. This is the method option for the pool_hba.conf item.
 # Defaults to <tt>undef</tt>
 #
@@ -56,12 +56,12 @@
 # === Examples
 #
 #  pgpool::hba { 'myuser_on_appnode31':
-#    ensure   => present,
-#    type     => 'host',
-#    database => 'all',
-#    user     => 'myuser',
-#    address  => '192.168.101.31/32',
-#    method   => 'md5',
+#    ensure      => present,
+#    type        => 'host',
+#    database    => 'all',
+#    user        => 'myuser',
+#    address     => '192.168.101.31/32',
+#    auth_method => 'md5',
 #  }
 #
 # === Authors
@@ -69,15 +69,15 @@
 # Alex Schultz <aschultz@next-development.com>
 #
 define pgpool::hba (
-  $ensure   = present,
-  $type     = undef,
-  $database = undef,
-  $user     = undef,
-  $address  = undef,
-  $method   = undef,
-  $options  = undef,
-  $position = undef,
-  $target   = undef,
+  $ensure      = present,
+  $type        = undef,
+  $database    = undef,
+  $user        = undef,
+  $address     = undef,
+  $auth_method = undef,
+  $options     = undef,
+  $position    = undef,
+  $target      = undef,
 ) {
 
   $target_real = $target ? {
@@ -91,7 +91,7 @@ define pgpool::hba (
     database => $database,
     user     => $user,
     address  => $address,
-    method   => $method,
+    method   => $auth_method,
     options  => $options,
     position => $position,
     target   => $target_real,
