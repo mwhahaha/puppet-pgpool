@@ -101,8 +101,8 @@ class pgpool::config {
   }
 
   file { $log_dir:
+    ensure => $::pgpool::directory_ensure
     owner  => $::pgpool::log_user,
     group  => $::pgpool::log_group,
-    ensure => $::pgpool::directory_ensure
   }
 }
