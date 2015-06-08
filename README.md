@@ -115,11 +115,11 @@ pgpool::pool_passwd { 'my_app_user':
 
 # configure the pgpool hba configuration
 pgpool::hba { 'my_app_user':
-  type     => 'host',
-  database => 'my_db_name',
-  user     => 'my_app_user',
-  address  => '127.0.0.1/32',
-  method   => 'md5',
+  type        => 'host',
+  database    => 'my_db_name',
+  user        => 'my_app_user',
+  address     => '127.0.0.1/32',
+  auth_method => 'md5',
 }
 ```
 

@@ -31,8 +31,18 @@
 # String. This is the address option for the pool_hba.conf item.
 # Defaults to <tt>undef</tt>
 #
+# [*auth_method*]
+# String. This is the method option for the pool_hba.conf item. Use either this
+# parameter or `method` below, but not both. This parameter is named in
+# accordance with PostgreSQL's documentation on the `pg_hba.conf` file and
+# should be preferred over `method`.
+# Defaults to <tt>undef</tt>
+#
 # [*method*]
-# String. This is the method option for the pool_hba.conf item.
+# String. This is the method option for the pool_hba.conf item. Use either this
+# parameter or `auth_method` above, but not both. This parameter is supported
+# for backwards compatibility but should be avoided since it is *not* named in
+# accordance with PostgreSQL's documentation on the `pg_hba.conf` file.
 # Defaults to <tt>undef</tt>
 #
 # [*options*]
@@ -56,12 +66,12 @@
 # === Examples
 #
 #  pgpool::hba { 'myuser_on_appnode31':
-#    ensure   => present,
-#    type     => 'host',
-#    database => 'all',
-#    user     => 'myuser',
-#    address  => '192.168.101.31/32',
-#    method   => 'md5',
+#    ensure      => present,
+#    type        => 'host',
+#    database    => 'all',
+#    user        => 'myuser',
+#    address     => '192.168.101.31/32',
+#    auth_method => 'md5',
 #  }
 #
 # === Authors
@@ -69,20 +79,35 @@
 # Alex Schultz <aschultz@next-development.com>
 #
 define pgpool::hba (
-  $ensure   = present,
-  $type     = undef,
-  $database = undef,
-  $user     = undef,
-  $address  = undef,
-  $method   = undef,
-  $options  = undef,
-  $position = undef,
-  $target   = undef,
+  $ensure      = present,
+  $type        = undef,
+  $database    = undef,
+  $user        = undef,
+  $address     = undef,
+  $auth_method = undef,
+  $method      = undef,
+  $options     = undef,
+  $position    = undef,
+  $target      = undef,
 ) {
 
   $target_real = $target ? {
     undef   => $pgpool::config::pool_hba_file,
     default => $target,
+  }
+
+  # Either $auth_method or $method can be used, but not both. Fail loudly if
+  # both are set by the user.
+  if $auth_method and $method {
+    fail ("Pgpool::Hba[${title}]: Cannot specify both \$auth_method and \$method. Please choose one, preferrably \$auth_method.")
+  }
+
+  # If $auth_method is not set (undef) use $method as $auth_method_real.
+  # $method might also be undef, which is ok; $auth_method_real then becomes
+  # undef, too. And if $auth_method is set (not undef), use it.
+  $auth_method_real = $auth_method ? {
+    undef   => $method,
+    default => $auth_method,
   }
 
   pg_hba { $name:
@@ -91,7 +116,7 @@ define pgpool::hba (
     database => $database,
     user     => $user,
     address  => $address,
-    method   => $method,
+    method   => $auth_method_real,
     options  => $options,
     position => $position,
     target   => $target_real,
