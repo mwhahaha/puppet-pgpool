@@ -28,6 +28,10 @@
 #  Integer. Time to sleep between health checks.
 #  Defaults to <tt>1</tt>.
 #
+# [*health_check_database*]
+#  String. The database name to perform health check.
+#  Defaults to <tt></tt>.
+#
 # === Variables
 #
 # N/A
@@ -50,6 +54,7 @@ class pgpool::config::healthcheck (
   $health_check_password    = '',
   $health_check_max_retries = 0,
   $health_check_retry_delay = 1,
+  $health_check_database    = '',
 ) {
 
   $healthcheck_config = {
@@ -59,6 +64,7 @@ class pgpool::config::healthcheck (
     'health_check_password'    => { value => $health_check_password },
     'health_check_max_retries' => { value => $health_check_max_retries },
     'health_check_retry_delay' => { value => $health_check_retry_delay },
+    'health_check_database'    => { value => $health_check_database },
   }
 
   $healthcheck_defaults = {
