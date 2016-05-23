@@ -37,6 +37,10 @@
 #   after a master failover.
 #   Defaults to <tt>''</tt>.
 #
+# [*sr_check_database*]
+#   String. The database to perform streaming replication delay check.
+#   Defaults to <tt>postgres</tt>.
+#
 # === Variables
 #
 # N/A
@@ -64,6 +68,7 @@ class pgpool::config::masterslave (
   $sr_check_password     = '',
   $delay_threshold       = 10000000,
   $follow_master_command = '',
+  $sr_check_database     = 'postgres',
 ) {
 
   $masterslave_config = {
@@ -74,6 +79,7 @@ class pgpool::config::masterslave (
     'sr_check_password'     => { value => $sr_check_password },
     'delay_threshold'       => { value => $delay_threshold },
     'follow_master_command' => { value => $follow_master_command },
+    'sr_check_database'     => { value => $sr_check_database },
   }
 
   $masterslave_defaults = {
