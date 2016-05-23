@@ -105,6 +105,26 @@
 #   String. The password to use for the lfie check query.
 #   Defaults to <tt></tt>.
 #
+# [*if_cmd_path*]
+#   String. This parameter specifies a path of a command to switch the IP address.
+#   Defaults to <tt></tt>.
+#
+# [*wd_de_escalation_command*]
+#   String. Watchdog executes this command on the master pgpool-II watchdog node when that node resigns from the master node responsibilities.
+#   Defaults to <tt></tt>.
+#
+# [*wd_monitoring_interfaces_list*]
+#   String. Specify a comma separated list of network device names, to be monitored by the watchdog process for the network link state.
+#   Defaults to <tt></tt>.
+#
+# [*wd_priority*]
+#   Integer. This parameter can be used to elevate the local watchdog node priority in the elections to select master watchdog node. minimum 1.
+#   Defaults to <tt>1</tt>.
+#
+# [*wd_ipc_socket_dir*]
+#   String. The directory where the UNIX domain socket accepting pgpool-II watchdog IPC connections will be created.
+#   Defaults to <tt>/tmp</tt>.
+#
 # === Variables
 #
 # N/A
@@ -142,6 +162,11 @@ class pgpool::config::watchdog (
   $wd_lifecheck_dbname           = 'template1',
   $wd_lifecheck_user             = 'nobody',
   $wd_lifecheck_password         = '',
+  $if_cmd_path                   = '',
+  $wd_de_escalation_command      = '',
+  $wd_monitoring_interfaces_list = '',
+  $wd_priority                   = 1,
+  $wd_ipc_socket_dir             = '/tmp',
 ) {
 
   $watchdog_config = {
@@ -169,6 +194,11 @@ class pgpool::config::watchdog (
     'wd_lifecheck_dbname'           => { value => $wd_lifecheck_dbname },
     'wd_lifecheck_user'             => { value => $wd_lifecheck_user },
     'wd_lifecheck_password'         => { value => $wd_lifecheck_password },
+    'if_cmd_path'                   => { value => $if_cmd_path },
+    'wd_de_escalation_command'      => { value => $wd_de_escalation_command },
+    'wd_monitoring_interfaces_list' => { value => $wd_monitoring_interfaces_list },
+    'wd_priority'                   => { value => $wd_priority },
+    'wd_ipc_socket_dir'             => { value => $wd_ipc_socket_dir },
   }
 
   $watchdog_defaults = {
