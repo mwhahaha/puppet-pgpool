@@ -52,7 +52,7 @@ define pgpool::pool_passwd (
     default => $ensure,
   }
 
-  file_line { $name:
+  file_line { "${name}-pool_passwd":
     ensure => $ensure_real,
     path   => $target_real,
     line   => "${name}:${password_hash}",
