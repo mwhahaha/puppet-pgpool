@@ -34,8 +34,8 @@
 #   String. The virtual IP for pgpool.
 #   Defaults to <tt></tt>.
 #
-# [*ifconfig_path*]
-#   String. The path to ifconfig.
+# [*if_cmd_path*]
+#   String. The path to the command specified in *if_up_cmd* and *if_down_cmd*
 #   Defaults to <tt>/sbin</tt>.
 #
 # [*if_up_cmd*]
@@ -145,7 +145,7 @@ class pgpool::config::watchdog (
   $wd_port                       = 9000,
   $wd_authkey                    = '',
   $delegate_IP                   = '',
-  $ifconfig_path                 = '/sbin',
+  $if_cmd_path                   = '/sbin',
   $if_up_cmd                     = 'ifconfig eth0:0 inet $_IP_$ netmask 255.255.255.0',
   $if_down_cmd                   = 'ifconfig eth0:0 down',
   $arping_path                   = '/usr/sbin',
@@ -177,7 +177,7 @@ class pgpool::config::watchdog (
     'wd_port'                       => { value => $wd_port },
     'wd_authkey'                    => { value => $wd_authkey },
     'delegate_IP'                   => { value => $delegate_IP },
-    'ifconfig_path'                 => { value => $ifconfig_path },
+    'if_cmd_path'                   => { value => $if_cmd_path },
     'if_up_cmd'                     => { value => $if_up_cmd },
     'if_down_cmd'                   => { value => $if_down_cmd },
     'arping_path'                   => { value => $arping_path },
