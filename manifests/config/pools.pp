@@ -50,6 +50,10 @@
 #   Integer. The timeout for pgpool authentication.
 #   Defaults to <tt>60</tt>.
 #
+# [*serialize_accept*]
+#   String. Activate process serialize function.
+#   Defaults to <tt>off</tt>.
+#
 # === Variables
 #
 # N/A
@@ -74,6 +78,7 @@ class pgpool::config::pools (
   $enable_pool_hba        = 'off',
   $pool_passwd            = 'pool_passwd',
   $authentication_timeout = 60,
+  $serialize_accept       = 'off',
 ) {
 
   $pools_config = {
@@ -88,6 +93,7 @@ class pgpool::config::pools (
     'enable_pool_hba'        => { value => $enable_pool_hba },
     'pool_passwd'            => { value => $pool_passwd },
     'authentication_timeout' => { value => $authentication_timeout },
+    'serialize_accept'       => { value => $serialize_accept },
   }
 
   $pools_defaults = {
