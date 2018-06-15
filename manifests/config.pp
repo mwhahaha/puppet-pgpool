@@ -49,9 +49,9 @@ class pgpool::config {
   }
 
   $defaults_dir = $::osfamily ? {
-    /RedHat/  => '/etc/sysconfig',
-    /Debian/  => '/etc/default',
-    default   => '/etc/sysconfig',
+    /RedHat/ => '/etc/sysconfig',
+    /Debian/ => '/etc/default',
+    default  => '/etc/sysconfig',
   }
 
   $pgpool_sysconfig_file = "${defaults_dir}/${::pgpool::service::pgpool_service_name}"
@@ -60,7 +60,6 @@ class pgpool::config {
   $pcp_file = "${config_dir}/pcp.conf"
   $pool_hba_file = "${config_dir}/pool_hba.conf"
   $log_dir = "/var/log/${::pgpool::service::pgpool_service_name}"
-  $pid_dir = '/var/run/pgpool'
 
   File {
     owner => $::pgpool::service_user,
@@ -81,11 +80,9 @@ class pgpool::config {
     notify => Exec['pgpool_reload']
   }
 
-  if $::osfamily !~ /BSD/ {
-    file { $pgpool_sysconfig_file:
-      ensure => $::pgpool::file_ensure,
-      notify => Service['pgpool']
-    }
+  file { $pgpool_sysconfig_file:
+    ensure => $::pgpool::file_ensure,
+    notify => Service['pgpool']
   }
 
   file { $pool_passwd_file:
@@ -107,15 +104,5 @@ class pgpool::config {
     ensure => $::pgpool::directory_ensure,
     owner  => $::pgpool::log_user,
     group  => $::pgpool::log_group,
-  }
-
-  if $::osfamily == 'FreeBSD' {
-    file { $pid_dir:
-      ensure => directory,
-      path   => $pid_dir,
-      owner  => $::pgpool::log_user,
-      group  => $::pgpool::log_group,
-      mode   => '0755',
-    }
   }
 }

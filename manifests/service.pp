@@ -36,28 +36,10 @@ class pgpool::service {
 
   $pgpool_service_name = $::pgpool::service_name_real
 
-  if $::osfamily == 'FreeBSD' {
-    $service_enable = $::pgpool::service_enable_real ? {
-      false   => 'NO',
-      default => 'YES',
-    }
-    file { '/etc/rc.conf.d/pgpool':
-      owner   => 'root',
-      group   => 'wheel',
-      mode    => '0644',
-      content => "pgpool_enable=\"${service_enable}\"\npgpool_user=\"${::pgpool::service_user}\"\n",
-    }
-    service { 'pgpool':
-      ensure => $::pgpool::service_ensure_real,
-      name   => $pgpool_service_name,
-    }
-  }
-  else {
-    service { 'pgpool':
-      ensure => $::pgpool::service_ensure_real,
-      name   => $pgpool_service_name,
-      enable => $::pgpool::service_enable_real
-    }
+  service { 'pgpool':
+    ensure => $::pgpool::service_ensure_real,
+    name   => $pgpool_service_name,
+    enable => $::pgpool::service_enable_real
   }
 
   exec { 'pgpool_reload':
