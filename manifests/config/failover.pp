@@ -13,10 +13,17 @@
 #  String. The command to run when a node is attached.
 #  Defaults to <tt></tt>.
 #
-# [*fail_over_on_backend_error*]
-#  String. If true and an error occurs when communicating witht he backend,
+# [*failover_on_backend_error*]
+#  String. If true and an error occurs when communicating with the backend,
 #  pgpool will trigger the failover procedure.
 #  Defaults to <tt>on</tt>.
+#
+# [*detach_false_primary*]
+#  String. If set to on, detach false primary node. The default is off.
+#  This parameter is only valid in streaming replication mode and for
+#  PostgreSQL 9.6 or after since this feature uses pg_stat_wal_receiver.
+#  If PostgreSQL 9.5.x or older version is used, no error is raised, just the feature is ignored.
+#  Defaults to <tt>off</tt>.
 #
 # [*search_primary_node_timeout*]
 #  Integer. The max amoutn of time in seconds to search for a primary node when
@@ -66,7 +73,8 @@
 class pgpool::config::failover (
   $failover_command              = '',
   $failback_command              = '',
-  $fail_over_on_backend_error    = 'on',
+  $failover_on_backend_error     = 'on',
+  $detach_false_primary          = 'off',
   $search_primary_node_timeout   = 10,
   $recovery_user                 = 'nobody',
   $recovery_password             = '',
@@ -79,7 +87,8 @@ class pgpool::config::failover (
   $failover_config = {
     'failover_command'              => { value => $failover_command },
     'failback_command'              => { value => $failback_command },
-    'fail_over_on_backend_error'    => { value => $fail_over_on_backend_error },
+    'failover_on_backend_error'     => { value => $failover_on_backend_error },
+    'detach_false_primary'          => { value => $detach_false_primary},
     'search_primary_node_timeout'   => { value => $search_primary_node_timeout },
     'recovery_user'                 => { value => $recovery_user },
     'recovery_password'             => { value => $recovery_password },
