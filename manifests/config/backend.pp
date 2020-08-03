@@ -23,6 +23,10 @@
 #   Integer. This is the port to connect to for the backend.
 #   Defaults to <tt>5432</tt>.
 #
+# [*application_name*]
+#   String. This must match the application_name defined via recovery.conf.
+#   Defaults to <tt>localhost</tt>.
+#
 # [*weight*]
 #   Integer. This is the weight to be configured for this backend.
 #   Defaults to <tt>1</tt>.
@@ -51,21 +55,23 @@
 # Alex Schultz <aschultz@next-development.com>
 #
 define pgpool::config::backend (
-  $ensure         = present,
-  $id             = 0,
-  $hostname       = 'localhost',
-  $port           = 5432,
-  $weight         = 1,
-  $data_directory = '/var/lib/pgsql/9.3/data',
-  $flag           = 'ALLOW_TO_FAILOVER',
+  $ensure           = present,
+  $id               = 0,
+  $hostname         = 'localhost',
+  $port             = 5432,
+  $application_name = 'localhost',
+  $weight           = 1,
+  $data_directory   = '/var/lib/pgsql/9.3/data',
+  $flag             = 'ALLOW_TO_FAILOVER',
 ) {
 
   $backend_config = {
-    "backend_hostname${id}"        => { value => $hostname },
-    "backend_port${id}"            => { value => $port },
-    "backend_weight${id}"          => { value => $weight },
-    "backend_data_directory${id}"  => { value => $data_directory },
-    "backend_flag${id}"            => { value => $flag },
+    "backend_hostname${id}"         => { value => $hostname },
+    "backend_port${id}"             => { value => $port },
+    "backend_application_name${id}" => { value => $application_name },
+    "backend_weight${id}"           => { value => $weight },
+    "backend_data_directory${id}"   => { value => $data_directory },
+    "backend_flag${id}"             => { value => $flag },
   }
 
   $backend_defaults = {
