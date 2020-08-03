@@ -96,16 +96,18 @@ class { 'pgpool::config::watchdog': }
 
 # configure our backend systems
 pgpool::config::backend { 'db-n01':
-  id             => '0',
-  hostname       => '10.0.0.4',
-  port           => 5432,
-  data_directory => '/var/lib/pgsql/9.3/data',
+  id               => '0',
+  hostname         => '10.0.0.4',
+  port             => 5432,
+  application_name => 'db-n01',
+  data_directory   => '/var/lib/pgsql/9.3/data',
 }
 pgpool::config::backend { 'db-n02':
-  id             => '1',
-  hostname       => '10.0.0.5',
-  port           => 5432,
-  data_directory => '/var/lib/pgsql/9.3/data',
+  id               => '1',
+  hostname         => '10.0.0.5',
+  port             => 5432,
+  application_name => 'db-n02',
+  data_directory   => '/var/lib/pgsql/9.3/data',
 }
 
 # configure our application user password access
