@@ -17,7 +17,7 @@
 #
 # [*hostname*]
 #   String. This is the hostname of the backend.
-#   Defaults to <tt>localhost</tt>.
+#   Defaults to the resource title.
 #
 # [*port*]
 #   Integer. This is the port to connect to for the backend.
@@ -25,7 +25,7 @@
 #
 # [*application_name*]
 #   String. This must match the application_name defined via recovery.conf.
-#   Defaults to <tt>localhost</tt>.
+#   Defaults to the resource title.
 #
 # [*weight*]
 #   Integer. This is the weight to be configured for this backend.
@@ -57,9 +57,9 @@
 define pgpool::config::backend (
   $ensure           = present,
   $id               = 0,
-  $hostname         = 'localhost',
+  $hostname         = $title,
   $port             = 5432,
-  $application_name = 'localhost',
+  $application_name = $title,
   $weight           = 1,
   $data_directory   = '/var/lib/pgsql/9.3/data',
   $flag             = 'ALLOW_TO_FAILOVER',
