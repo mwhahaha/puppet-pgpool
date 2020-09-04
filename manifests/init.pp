@@ -150,15 +150,15 @@ class pgpool (
   class { 'pgpool::config': }
 
   if ($ensure == absent) {
-    Anchor['pgpool::begin'] ->
-      Class['pgpool::service'] ->
-      Class['pgpool::config'] ->
-      Class['pgpool::package']
+    Anchor['pgpool::begin']
+      -> Class['pgpool::service']
+        -> Class['pgpool::config']
+          -> Class['pgpool::package']
   } else {
-    Anchor['pgpool::begin'] ->
-      Class['pgpool::package'] ->
-      Class['pgpool::config'] ->
-      Class['pgpool::service']
+    Anchor['pgpool::begin']
+      -> Class['pgpool::package']
+        -> Class['pgpool::config']
+          -> Class['pgpool::service']
 
   }
 }

@@ -1,12 +1,10 @@
 language: ruby
 rvm:
-  - 1.8.7
-  - 1.9.3
-  - 2.0.0
-  - 2.1.1
+  - 2.5.3
+  - 2.5.7
 
-before_install: rm .gemfiles/Gemfile.rspec.lock || true
-gemfile: .gemfiles/Gemfile.rspec
+before_install: rm Gemfile.lock || true
+gemfile: Gemfile
 
 script:
  - "bundle exec rake lint"
@@ -14,31 +12,9 @@ script:
  - "bundle exec rake spec SPEC_OPTS='--format documentation'"
 
 env:
-  - PUPPET_VERSION="~> 2.7.0"
-  - PUPPET_VERSION="~> 3.1.0"
-  - PUPPET_VERSION="~> 3.2.0"
-  - PUPPET_VERSION="~> 3.3.0"
-  - PUPPET_VERSION="~> 3.4.0"
-  - PUPPET_VERSION="~> 3.5.0"
-  - PUPPET_VERSION="~> 3.6.0"
-  - PUPPET_VERSION="~> 3.7.0"
-matrix:
-  exclude:
-    - rvm: 1.9.3
-      env: PUPPET_VERSION="~> 2.7.0"
-    - rvm: 2.0.0
-      env: PUPPET_VERSION="~> 2.7.0"
-    - rvm: 2.0.0
-      env: PUPPET_VERSION="~> 3.1.0"
-    - rvm: 2.1.1
-      env: PUPPET_VERSION="~> 2.7.0"
-    - rvm: 2.1.1
-      env: PUPPET_VERSION="~> 3.0.0"
-    - rvm: 2.1.1
-      env: PUPPET_VERSION="~> 3.1.0"
-    - rvm: 2.1.1
-      env: PUPPET_VERSION="~> 3.2.0"
-    - rvm: 2.1.1
-      env: PUPPET_VERSION="~> 3.3.0"
-    - rvm: 2.1.1
-      env: PUPPET_VERSION="~> 3.4.0"
+  - PUPPET_VERSION="~> 5.5.0"
+  - PUPPET_VERSION="~> 6.17.0"
+#matrix:
+#  exclude:
+#    - rvm: 2.5.3
+#      env: PUPPET_VERSION="~> 6.17.0"

@@ -2,6 +2,8 @@ require 'rubygems'
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 PuppetLint.configuration.send('disable_80chars')
+# TODO(mwhahaha): remove this after deprecation period
+PuppetLint.configuration.send('disable_variable_is_lowercase')
 PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "pkg/**/*.pp"]
 
 desc "Validate manifests, templates, and ruby files"

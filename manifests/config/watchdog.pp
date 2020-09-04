@@ -30,7 +30,7 @@
 #   String. The auth key to use for the watchdog.
 #   Defaults to <tt></tt>.
 #
-# [*delegate_IP*]
+# [*delegate_ip*]
 #   String. The virtual IP for pgpool.
 #   Defaults to <tt></tt>.
 #
@@ -125,6 +125,12 @@
 #   String. The directory where the UNIX domain socket accepting pgpool-II watchdog IPC connections will be created.
 #   Defaults to <tt>/tmp</tt>.
 #
+# === DEPECATED
+#
+# [*delegate_IP*]
+#   String. The virtual IP for pgpool.
+#   Defaults to <tt></tt>.
+#
 # === Variables
 #
 # N/A
@@ -144,7 +150,7 @@ class pgpool::config::watchdog (
   $wd_hostname                   = '',
   $wd_port                       = 9000,
   $wd_authkey                    = '',
-  $delegate_IP                   = '',
+  $delegate_ip                   = '',
   $ifconfig_path                 = '/sbin',
   $if_up_cmd                     = 'ifconfig eth0:0 inet $_IP_$ netmask 255.255.255.0',
   $if_down_cmd                   = 'ifconfig eth0:0 down',
@@ -167,8 +173,13 @@ class pgpool::config::watchdog (
   $wd_monitoring_interfaces_list = '',
   $wd_priority                   = 1,
   $wd_ipc_socket_dir             = '/tmp',
+  # deprecated
+  $delegate_IP                   = undef,
 ) {
 
+  if $delegate_IP {
+    warning('DEPRECATED: $delegate_IP has been replaced by $delegate_ip and will be removed in a future version')
+  }
   $watchdog_config = {
     'use_watchdog'                  => { value => $use_watchdog },
     'trusted_servers'               => { value => $trusted_servers },
@@ -176,7 +187,7 @@ class pgpool::config::watchdog (
     'wd_hostname'                   => { value => $wd_hostname },
     'wd_port'                       => { value => $wd_port },
     'wd_authkey'                    => { value => $wd_authkey },
-    'delegate_IP'                   => { value => $delegate_IP },
+    'delegate_IP'                   => { value => pick($delegate_IP, $delegate_ip) },
     'ifconfig_path'                 => { value => $ifconfig_path },
     'if_up_cmd'                     => { value => $if_up_cmd },
     'if_down_cmd'                   => { value => $if_down_cmd },
