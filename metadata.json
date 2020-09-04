@@ -10,7 +10,7 @@
   "tags": [ "pgpool", "database", "postgresql" ],
   "dependencies": [
     {
-      "version_range": ">= 1.0.0 < 6.5.0",
+      "version_requirement": ">= 1.0.0 < 6.5.0",
       "name": "puppetlabs-stdlib"
     },
     {
