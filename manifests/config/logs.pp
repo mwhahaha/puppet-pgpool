@@ -48,6 +48,11 @@
 #   Integer. Set to 1 for debug logging.
 #   Defaults to <tt>0</tt>.
 #
+# [*log_line_prefix*]
+#   String. This is a printf-style string that is outputted at the beginning 
+#   of each log line.
+#   Defaults to <tt>%t: pid% p: </tt>
+#
 # === Variables
 #
 # N/A
@@ -73,6 +78,7 @@ class pgpool::config::logs (
   $syslog_facility        = 'LOCAL0',
   $syslog_ident           = 'pgpool',
   $debug_level            = 0,
+  $log_line_prefix        = '%t: pid %p:',
 ) {
 
   $logs_config = {
@@ -86,6 +92,7 @@ class pgpool::config::logs (
     'syslog_facility'        => { value => $syslog_facility },
     'syslog_ident'           => { value => $syslog_ident },
     'debug_level'            => { value => $debug_level },
+    'log_line_prefix'        => { value => $log_line_prefix },
   }
 
   $logs_defaults = {
