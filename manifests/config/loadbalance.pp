@@ -65,8 +65,8 @@ class pgpool::config::loadbalance (
     'ignore_leading_white_space'        => { value => $ignore_leading_white_space },
     'white_function_list'               => { value => $white_function_list },
     'black_function_list'               => { value => $black_function_list },
-    'app_name_redirect_preference_list' => {value => $app_name_redirect_preference_list },
-    'database_redirect_preference_list' => {value => $database_redirect_preference_list },
+    'app_name_redirect_preference_list' => { value => $app_name_redirect_preference_list },
+    'database_redirect_preference_list' => { value => $database_redirect_preference_list },
   }
 
   $loadbalance_defaults = {
